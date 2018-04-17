@@ -13,8 +13,13 @@ task main()
 {
 	while(true)
 	{
-		motor[drive] = (127*(SensorValue[pot]))/4096;
-		int value = (127*(SensorValue[pot]))/4096;
+		int power = (127*(SensorValue[ultrasonic]))/24;
+		if (power > 127)
+		{
+			int power = 127;
+		}
+		motor[drive] = power;
+		int value = (127*(SensorValue[ultrasonic]))/24;
 		if(value < 45)
 		{
 			SensorValue[ledRed] = 1;
